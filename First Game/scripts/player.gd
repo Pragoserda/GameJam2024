@@ -5,7 +5,7 @@ var SPEED = 130.0
 var JUMP_VELOCITY = -250.0
 
 var taille = 2
-var monde = 3
+var monde = 1
 var input_string = ""
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -38,7 +38,7 @@ func _input(event):
 	if not is_on_floor() or not is_on_wall() or not is_on_ceiling():
 		if event is InputEventKey and event.pressed:
 			var key = event.as_text_key_label()
-			if key != "Q" and key != "D" and key != "Space" and key != "S" and key != "Z":  # Exclure les touches de déplacement
+			if key != "Q" and key != "D" and key != "Space" and key != "S" and key != "Z" and key != "Left" and key != "Right" and key != "Up" and key != "Down":  # Exclure les touches de déplacement
 				input_string += key
 				$LabelKey.text = input_string
 				
@@ -114,7 +114,7 @@ func adjust_size(scale_factor):
 		var current_bottom_y = position.y + collision_shape.height/2 + collision_shape.radius
 		animated_sprite.scale.y *= scale_factor
 		collision_shape.height *= scale_factor
-		collision_shape.radius *= scale_factor
+		#collision_shape.radius *= scale_factor
 		position.y = current_bottom_y - (collision_shape.height/2 + collision_shape.radius)
 	else : 
 		print("Erreur : La forme de collision n'est pas une capsule")
