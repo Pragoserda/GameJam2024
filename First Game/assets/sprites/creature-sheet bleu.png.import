@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b1wafe6505gkc"
-path="res://.godot/imported/creature-sheet.png-dc841326f2f6542bec77a4f4ad03d2c3.ctex"
+uid="uid://b0uvjipjsrvt5"
+path="res://.godot/imported/creature-sheet bleu.png-e1c05d932f39e8ff9ea0f44aba9d1940.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/creature-sheet.png"
-dest_files=["res://.godot/imported/creature-sheet.png-dc841326f2f6542bec77a4f4ad03d2c3.ctex"]
+source_file="res://assets/sprites/creature-sheet bleu.png"
+dest_files=["res://.godot/imported/creature-sheet bleu.png-e1c05d932f39e8ff9ea0f44aba9d1940.ctex"]
 
 [params]
 
