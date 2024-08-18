@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgv5v2fxqlswe"]
+[gd_scene load_steps=3 format=3 uid="uid://rf6n0wu6ddmy"]
 
-[ext_resource type="Texture2D" uid="uid://dfequib8i7co1" path="res://assets/kenney_pixel-platformer/Tilemap/tilemap_packed.png" id="1_ysbnl"]
+[ext_resource type="Texture2D" uid="uid://dfequib8i7co1" path="res://assets/kenney_pixel-platformer/Tilemap/tilemap_packed.png" id="1_7vw54"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_13ihi"]
 size = Vector2(32, 5)
@@ -9,13 +9,11 @@ size = Vector2(32, 5)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-0.205345, 0)
-rotation = 3.14159
 scale = Vector2(1.26357, 0.571429)
-texture = ExtResource("1_ysbnl")
+texture = ExtResource("1_7vw54")
 region_enabled = true
 region_rect = Rect2(334.809, 90.2424, 25.4045, 10.1348)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_13ihi")
 one_way_collision = true

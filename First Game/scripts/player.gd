@@ -5,7 +5,7 @@ var SPEED = 130.0
 var JUMP_VELOCITY = -250.0
 
 var taille = 2
-var monde = 1
+var monde = 3
 var input_string = ""
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -38,7 +38,7 @@ func _input(event):
 	if not is_on_floor() or not is_on_wall() or not is_on_ceiling():
 		if event is InputEventKey and event.pressed:
 			var key = event.as_text_key_label()
-			if key != "Q" and key != "D" and key != "Space":  # Exclure les touches de déplacement
+			if key != "Q" and key != "D" and key != "Space" and key != "S" and key != "Z":  # Exclure les touches de déplacement
 				input_string += key
 				$LabelKey.text = input_string
 				
