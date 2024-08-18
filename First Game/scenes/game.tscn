@@ -22,7 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://d1ebtk4cdjbhj" path="res://assets/tontonasset/Mountain_bg.png" id="12_sh72u"]
 [ext_resource type="Texture2D" uid="uid://b50a8p733erle" path="res://assets/tontonasset/Design sans titre (9).png" id="13_3qv7s"]
 [ext_resource type="Texture2D" uid="uid://gypmbeh0uidm" path="res://assets/tontonasset/5.png" id="16_c5hua"]
-[ext_resource type="PackedScene" uid="uid://rf6n0wu6ddmy" path="res://scenes/plateformeGauche.tscn" id="18_jeqmf"]
+[ext_resource type="PackedScene" uid="uid://2l77ta84rri7" path="res://scenes/plateformeGauche.tscn" id="18_jeqmf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ashvg"]
 texture = ExtResource("2_r1crl")
