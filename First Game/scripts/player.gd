@@ -5,6 +5,7 @@ var JUMP_VELOCITY = -250.0
 
 var taille = 2
 var monde = 1
+var teleportdirection = 1
 var input_string = ""
 
 var coyote_time = 0.1
@@ -31,11 +32,6 @@ func _ready() -> void:
 	timer.one_shot = true
 	timer.connect("timeout", Callable(self, "_on_timer_timeout"))
 
-	# Connexion des signaux body_entered et body_exited pour chaque Area2D
-	block_area_1.connect("body_entered", Callable(self, "_on_tpvertrouge_body_entered"))
-	block_area_1.connect("body_exited", Callable(self, "_on_tpvertrouge_body_exited"))
-	block_area_2.connect("body_entered", Callable(self, "_on_tprougevert_body_entered"))
-	block_area_2.connect("body_exited", Callable(self, "_on_tprougevert_body_exited"))
 
 func check_input_string():
 	match input_string:
@@ -68,7 +64,6 @@ func _input(event):
 		
 
 func _physics_process(delta):
-
 # Capture des touches pour la séquence de téléportation
 	if on_correct_blocks:
 		if Input.is_action_just_pressed("InputUp"):
@@ -159,19 +154,40 @@ func reset_input_string() -> void:
 	label_key.text = input_string
 	print("Le texte a été réinitialisé.")
 
-func _on_tpvertrouge_body_entered(body):
+func _on_tpvertrouge():
 	on_correct_blocks = true
-
-func _on_tpvertrouge_body_exited(body):
+	teleport_target_position = Vector2(-421, -758)
+	teleportdirection = 2
+	
+func _exit_tpvertrouge():
 	on_correct_blocks = false
+	
+func _on_tprougebleu():
+	on_correct_blocks = true
+	teleport_target_position = Vector2(-325, -2158)
+	teleportdirection = 3
 
+func _exit_tpbleurouge():
+	on_correct_blocks = false
+	
+func _on_tpbleurouge():
+	on_correct_blocks = true
+	teleport_target_position = Vector2(362, -760)
+	teleportdirection = 2
+	
+func _exit_tprougebleu():
+	on_correct_blocks = false
+	
 func _on_tprougevert_body_entered(body):
 	on_correct_blocks = true
+	teleport_target_position = Vector2(1594, -72)
+	teleportdirection = 1
 
 func _on_tprougevert_body_exited(body):
 	on_correct_blocks = false
 
 func teleport_player():
-	monde = 2
+	monde = teleportdirection
+	print(monde)
 	position = teleport_target_position
-	#get_tree().current_scene.set_position(teleport_target_position)
+	current_input_sequence = []
