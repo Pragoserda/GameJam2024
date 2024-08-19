@@ -12,12 +12,14 @@ var coyote_time = 0.1
 var coyote_timer = 0.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-var required_input_sequence = ["up","down","left","right"]
+var required_input_sequence = ["up","down","right","left"]
 var current_input_sequence = []
 var on_correct_blocks = false
 var teleport_target_position = Vector2(-355, -718)  # Position cible dans le deuxième monde
 #var target_world = "res://second_world.tscn"  # Chemin vers la scène du deuxième monde
+var start_position = Vector2(-421, -758)  # Position de départ du joueur
 
+@onready var meteor_manager = $groupemeteor  # Référence au gestionnaire de météorites
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var collision_shape_node = $CollisionShape2D
 @onready var timer = $LabelKey/Timer
@@ -31,7 +33,8 @@ func _ready() -> void:
 	timer.wait_time = 2.0
 	timer.one_shot = true
 	timer.connect("timeout", Callable(self, "_on_timer_timeout"))
-
+	if monde == 2:
+		position = start_position
 
 func check_input_string():
 	match input_string:
@@ -152,7 +155,6 @@ func _on_timer_timeout() -> void:
 func reset_input_string() -> void:
 	input_string = ""
 	label_key.text = input_string
-	print("Le texte a été réinitialisé.")
 
 func _on_tpvertrouge():
 	on_correct_blocks = true
@@ -180,7 +182,7 @@ func _exit_tprougebleu():
 	
 func _on_tprougevert_body_entered(body):
 	on_correct_blocks = true
-	teleport_target_position = Vector2(1594, -72)
+	teleport_target_position = Vector2(1594, -165)
 	teleportdirection = 1
 
 func _on_tprougevert_body_exited(body):
@@ -191,3 +193,13 @@ func teleport_player():
 	print(monde)
 	position = teleport_target_position
 	current_input_sequence = []
+
+func _on_meteorite_entered(body: Node) -> void:
+	print(body,body.name)
+	if body is RigidBody2D and body.name == "Meteorite":
+		reset_level()
+
+func reset_level():
+	# Réinitialiser la position du joueur
+	position = start_position
+	meteor_manager.start_spawn_pattern()
